@@ -15,20 +15,7 @@ public class BugFix extends ParameterAdapter {
 		MethodVisitor methodVisitor = super.visitMethod(access, name, desc,
 				signature, exceptions);
 		if (name.equalsIgnoreCase("nextY")) {
-			System.out
-					.println("-----------------------------------------------");
-			System.out.println("\tname: " + name);
-			System.out.println("\tdesc: " + desc);
-			System.out.println("\tsignature: " + signature);
-			if (exceptions != null) {
-				System.out
-						.println("\texceptions (" + exceptions.length + ") :");
-				for (String exception : exceptions) {
-					System.out.println("\t\t" + exception);
-				}
-			}
-			System.out
-					.println("-----------------------------------------------");
+			methodVisitor = new BugFixMethodVisitor(methodVisitor);
 		}
 
 		return methodVisitor;

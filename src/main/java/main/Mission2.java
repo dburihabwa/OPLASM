@@ -35,10 +35,9 @@ public class Mission2 {
 		byte[] output = writer.toByteArray();
 		System.out.println("(" + input.length + ")");
 		System.out.println("(" + output.length + ")");
-		
 
 		FileOutputStream fout = new FileOutputStream(
-				"/home/local/burihabwa/Mandelbrot2.class");
+				"/home/dorian/Mandelbrot.class");
 		byte[] data = writer.toByteArray();
 		fout.write(data);
 		fout.close();
