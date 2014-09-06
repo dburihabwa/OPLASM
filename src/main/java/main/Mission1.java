@@ -16,14 +16,7 @@ public class Mission1 {
 		FileInputStream fis = new FileInputStream(path);
 		int length = fis.available();
 		byte[] input = new byte[length];
-		int bytesRead = fis.read(input);
-		if (bytesRead != length) {
-			if (fis != null) {
-				fis.close();
-			}
-			throw new IOException(
-					"Number of bytes read does not match length of file");
-		}
+		fis.read(input);
 		fis.close();
 
 		ClassReader reader = new ClassReader(input);
@@ -32,12 +25,7 @@ public class Mission1 {
 		ClassVisitor visitor = new ParameterAdapter(writer);
 		reader.accept(visitor, 0);
 
-		byte[] output = writer.toByteArray();
-		System.out.println("(" + input.length + ")");
-		System.out.println("(" + output.length + ")");
-
-		FileOutputStream fout = new FileOutputStream(
-				"/home/local/burihabwa/Mandelbrot.class");
+		FileOutputStream fout = new FileOutputStream("Mandelbrot.class");
 		byte[] data = writer.toByteArray();
 		fout.write(data);
 		fout.close();
